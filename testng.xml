@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Licious Admin Login Tests" parallel="false">
+    <listeners>
+        <listener class-name="org.example.utils.TestListener"/>
+    </listeners>
+    <test name="Licious Admin Login Test">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="org.example.Feature_Test.OMS_MIGRATION"/>
+        </classes>
+    </test>
+</suite>
