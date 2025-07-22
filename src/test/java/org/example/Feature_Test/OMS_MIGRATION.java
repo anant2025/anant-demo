@@ -62,21 +62,37 @@ public class OMS_MIGRATION extends TestBase {
     }
 
     @Test(description = "validatedropdown")
-
-    public void validatedropdown()  throws InterruptedException {
-        loginPage.CtalogManagement("Catalog Management");
-        Thread.sleep(10000);
-        ReportManager.getTest().info("Clicked on Catalog Management ");
-        loginPage.City("City");
-        Thread.sleep(10000);
-        ReportManager.getTest().info("Clicked on City ");
-        loginPage.CreateCity("Create City");
-        Thread.sleep(10000);
-        ReportManager.getTest().info("Clicked on Create City ");
-
-
-
-
+    public void validatedropdown() throws InterruptedException {
+        try {
+            // Step 1: Open Catalog Management
+            System.out.println("=== Starting Test: validatedropdown ===");
+            loginPage.CatalogManagement();
+            ReportManager.getTest().info("Successfully opened Catalog Management");
+            
+            // Step 2: Select City
+            System.out.println("\n=== Selecting City ===");
+            loginPage.City("City");
+            ReportManager.getTest().info("Clicked on City");
+            
+            // Add a small delay to see the action
+            Thread.sleep(2000);
+            
+            // Step 3: Create City
+            System.out.println("\n=== Creating City ===");
+            loginPage.CreateCity("Create City");
+            ReportManager.getTest().info("Clicked on Create City");
+            
+            // Add a final delay to see the result
+            Thread.sleep(3000);
+            System.out.println("=== Test completed successfully ===");
+            
+        } catch (Exception e) {
+            String errorMsg = "Test failed: " + e.getMessage();
+            System.err.println(errorMsg);
+            e.printStackTrace();
+            ReportManager.getTest().fail(errorMsg);
+            throw e;
+        }
     }
 }
 
