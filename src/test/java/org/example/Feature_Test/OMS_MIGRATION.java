@@ -8,6 +8,7 @@ package org.example.Feature_Test;
  * - Uses BaseClass for WebDriver management
  * - Uses TestDataManager for test data handling
  */
+import java.lang.Thread;
 import org.example.pages.LoginPage;
 import org.example.utils.BaseClass;
 import org.example.utils.ReportManager;
@@ -62,15 +63,19 @@ public class OMS_MIGRATION extends TestBase {
 
     @Test(description = "validatedropdown")
 
-    public void validatedropdown() {
-        loginPage.CatalogManagement();
-        ReportManager.getTest().info("Successfully navigated to Catalog Management page.");
-        // Wait until City element is clickable using the By locator
-        wait.until(ExpectedConditions.elementToBeClickable(loginPage.getCityLocator()));
-        driver.findElement(loginPage.getCityLocator()).click();
-        ReportManager.getTest().info("Successfully clicked on City element.");
-        loginPage.City();
-        ReportManager.getTest().info("Successfully clicked on City element.");
+    public void validatedropdown()  throws InterruptedException {
+        loginPage.CtalogManagement("Catalog Management");
+        Thread.sleep(10000);
+        ReportManager.getTest().info("Clicked on Catalog Management ");
+        loginPage.City("City");
+        Thread.sleep(10000);
+        ReportManager.getTest().info("Clicked on City ");
+        loginPage.CreateCity("Create City");
+        Thread.sleep(10000);
+        ReportManager.getTest().info("Clicked on Create City ");
+
+
+
 
     }
 }
